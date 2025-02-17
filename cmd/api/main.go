@@ -2,25 +2,22 @@ package main
 
 import (
 	"context"
+	"log"
 	"net/http"
 	"time"
 
-	"github.com/evt/rest-api-example/service"
-	"github.com/evt/rest-api-example/store"
-	"github.com/pkg/errors"
-
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	echoLog "github.com/labstack/gommon/log"
+	"github.com/pkg/errors"
 
 	"github.com/evt/rest-api-example/config"
 	"github.com/evt/rest-api-example/controller"
 	libError "github.com/evt/rest-api-example/lib/error"
 	"github.com/evt/rest-api-example/lib/validator"
 	"github.com/evt/rest-api-example/logger"
-
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
-
-	"log"
+	"github.com/evt/rest-api-example/service"
+	"github.com/evt/rest-api-example/store"
 )
 
 func main() {
