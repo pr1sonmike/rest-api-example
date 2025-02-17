@@ -6,16 +6,14 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/evt/rest-api-example/logger"
-
-	"github.com/evt/rest-api-example/lib/types"
-
-	"github.com/evt/rest-api-example/service"
 	"github.com/google/uuid"
+	"github.com/labstack/echo/v4"
 	"github.com/pkg/errors"
 
+	"github.com/evt/rest-api-example/lib/types"
+	"github.com/evt/rest-api-example/logger"
 	"github.com/evt/rest-api-example/model"
-	"github.com/labstack/echo/v4"
+	"github.com/evt/rest-api-example/service"
 )
 
 // FileController ...
@@ -37,10 +35,12 @@ func NewFiles(ctx context.Context, services *service.Manager, logger *logger.Log
 // Create creates new file
 func (ctr *FileController) Create(ctx echo.Context) error {
 	var file model.File
+
 	err := ctx.Bind(&file)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, errors.Wrap(err, "could not decode file data"))
 	}
+
 	err = ctx.Validate(&file)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusUnprocessableEntity, err)
@@ -69,6 +69,7 @@ func (ctr *FileController) Get(ctx echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, errors.Wrap(err, "could not parse file UUID"))
 	}
+
 	file, err := ctr.services.FileMeta.GetFileMeta(ctx.Request().Context(), fileID)
 	if err != nil {
 		switch {
@@ -80,6 +81,7 @@ func (ctr *FileController) Get(ctx echo.Context) error {
 			return echo.NewHTTPError(http.StatusInternalServerError, errors.Wrap(err, "could not get file"))
 		}
 	}
+
 	return ctx.JSON(http.StatusOK, file)
 }
 
@@ -89,6 +91,7 @@ func (ctr *FileController) Delete(ctx echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, errors.Wrap(err, "could not parse file UUID"))
 	}
+
 	err = ctr.services.FileMeta.DeleteFileMeta(ctx.Request().Context(), fileID)
 	if err != nil {
 		switch {
@@ -118,11 +121,14 @@ func (ctr *FileController) Upload(ctx echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, errors.Wrap(err, "could not parse file UUID"))
 	}
+
 	err = ctr.services.FileContent.Upload(ctx.Request().Context(), fileID, fileBody)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, errors.Wrap(err, "could not upload file"))
 	}
+
 	ctr.logger.Debug().Msgf("Saved content for file '%s'", fileID.String())
+
 	return ctx.JSON(http.StatusOK, model.OK)
 }
 
@@ -132,11 +138,14 @@ func (ctr *FileController) Download(ctx echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, errors.Wrap(err, "could not parse file UUID"))
 	}
+
 	fileBody, dbFile, err := ctr.services.FileContent.Download(ctx.Request().Context(), fileID)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, errors.Wrap(err, "could not download file content"))
 	}
+
 	ctr.logger.Debug().Msgf("Downloaded content for file '%s'", fileID.String())
 	ctx.Response().Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=%q", dbFile.Filename))
+
 	return ctx.Blob(http.StatusOK, dbFile.ContentType, fileBody)
 }

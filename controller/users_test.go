@@ -7,17 +7,16 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/evt/rest-api-example/service"
-
-	"github.com/evt/rest-api-example/logger"
-
-	"github.com/evt/rest-api-example/lib/types"
-	"github.com/evt/rest-api-example/lib/validator"
-	"github.com/evt/rest-api-example/model"
-	"github.com/evt/rest-api-example/service/mocks"
 	"github.com/labstack/echo/v4"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/evt/rest-api-example/lib/types"
+	"github.com/evt/rest-api-example/lib/validator"
+	"github.com/evt/rest-api-example/logger"
+	"github.com/evt/rest-api-example/model"
+	"github.com/evt/rest-api-example/service"
+	"github.com/evt/rest-api-example/service/mocks"
 )
 
 func TestCreateUser(t *testing.T) {
@@ -74,11 +73,14 @@ func TestCreateUser(t *testing.T) {
 		// initialize the echo context to use for the test
 		e := echo.New()
 		e.Validator = validator.NewValidator()
+
 		r, err := http.NewRequest(echo.POST, "/users/", strings.NewReader(test.input))
 		if err != nil {
 			t.Fatal("could not create request")
 		}
+
 		r.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
+
 		w := httptest.NewRecorder()
 		ctx := e.NewContext(r, w)
 
@@ -96,10 +98,12 @@ func TestCreateUser(t *testing.T) {
 			} else {
 				t.Errorf("Expected no error, found: %s", err.Error())
 			}
+
 			assert.Equal(t, test.code, types.HTTPCode(err))
 		} else {
 			assert.Equal(t, test.code, w.Code)
 		}
+
 		svc.AssertExpectations(t)
 	}
 }

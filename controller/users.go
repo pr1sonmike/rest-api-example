@@ -4,16 +4,14 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/evt/rest-api-example/logger"
-
-	"github.com/evt/rest-api-example/lib/types"
-
-	"github.com/evt/rest-api-example/service"
 	"github.com/google/uuid"
+	"github.com/labstack/echo/v4"
 	"github.com/pkg/errors"
 
+	"github.com/evt/rest-api-example/lib/types"
+	"github.com/evt/rest-api-example/logger"
 	"github.com/evt/rest-api-example/model"
-	"github.com/labstack/echo/v4"
+	"github.com/evt/rest-api-example/service"
 )
 
 // UserController ...
@@ -35,10 +33,12 @@ func NewUsers(ctx context.Context, services *service.Manager, logger *logger.Log
 // Create creates new user
 func (ctr *UserController) Create(ctx echo.Context) error {
 	var user model.User
+
 	err := ctx.Bind(&user)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, errors.Wrap(err, "could not decode user data"))
 	}
+
 	err = ctx.Validate(&user)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusUnprocessableEntity, err)
@@ -65,6 +65,7 @@ func (ctr *UserController) Get(ctx echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, errors.Wrap(err, "could not parse user UUID"))
 	}
+
 	user, err := ctr.services.User.GetUser(ctx.Request().Context(), userID)
 	if err != nil {
 		switch {
@@ -76,6 +77,7 @@ func (ctr *UserController) Get(ctx echo.Context) error {
 			return echo.NewHTTPError(http.StatusInternalServerError, errors.Wrap(err, "could not get user"))
 		}
 	}
+
 	return ctx.JSON(http.StatusOK, user)
 }
 
@@ -85,6 +87,7 @@ func (ctr *UserController) Delete(ctx echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, errors.Wrap(err, "could not parse user UUID"))
 	}
+
 	err = ctr.services.User.DeleteUser(ctx.Request().Context(), userID)
 	if err != nil {
 		switch {

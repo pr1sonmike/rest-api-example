@@ -1,0 +1,61 @@
+linters-settings:
+  goconst:
+    min-occurrences: 2
+  gci:
+    sections:
+      - standard
+      - default
+      - blank
+      - dot
+      - alias
+      - localmodule
+  revive:
+    enable-all-rules: true
+    rules:
+      - name: "unused-receiver"
+        disabled: true
+      - name: "unused-parameter"
+        disabled: true
+      - name: "add-constant"
+        disabled: true
+      - name: "import-alias-naming"
+        disabled: true
+      - name: "var-naming"
+        arguments:
+          - []
+          - []
+          - - skipPackageNameChecks: true
+      - name: "line-length-limit"
+        arguments:
+          - 130
+      - name: "cognitive-complexity"
+        arguments:
+          - 25
+      - name: "cyclomatic"
+        arguments:
+          - 15
+      - name: "function-length"
+        arguments:
+          - 80
+          - 150
+  stylecheck:
+    checks:
+      - "all"
+      - "-ST1003"
+
+linters:
+  enable-all: true
+  disable:
+    - exportloopref # deprecated (since v1.60.2) due to: Since Go1.22 (loopvar) this linter is no longer relevant. Replaced by copyloopvar
+    - lll # used revive line-length-limit instead
+    - funlen # used revive function-length instead
+    - cyclop # used revive cyclomatic instead
+    - godox
+    - godot
+    - varnamelen
+    - tagalign
+    - paralleltest
+    - exhaustruct
+    - depguard # temporarily disabled, enable after moving pkg to separate repo
+    - testpackage # decide whether to enable or not after discussion
+
