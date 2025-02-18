@@ -7,8 +7,8 @@ import (
 	"io"
 
 	"cloud.google.com/go/storage"
-	"github.com/evt/rest-api-example/model"
 	"github.com/pkg/errors"
+	
 )
 
 // GoogleCloudFileContentRepo ...

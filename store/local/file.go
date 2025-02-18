@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/evt/rest-api-example/model"
 	"github.com/pkg/errors"
+	
 )
 
 // GoogleCloudFileContentRepo ...

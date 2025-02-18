@@ -5,18 +5,18 @@ import (
 	"log"
 	"time"
 
-	"github.com/evt/rest-api-example/store/local"
+	"github.com/pr1sonmike/rest-api-example/store/local"
 
-	"github.com/evt/rest-api-example/logger"
+	"github.com/pr1sonmike/rest-api-example/logger"
 
-	"github.com/evt/rest-api-example/store/gcloud"
+	"github.com/pr1sonmike/rest-api-example/store/gcloud"
 
-	"github.com/evt/rest-api-example/config"
+	"github.com/pr1sonmike/rest-api-example/config"
 
 	"github.com/pkg/errors"
 
-	"github.com/evt/rest-api-example/store/mysql"
-	"github.com/evt/rest-api-example/store/pg"
+	"github.com/pr1sonmike/rest-api-example/store/mysql"
+	"github.com/pr1sonmike/rest-api-example/store/pg"
 )
 
 // Store contains all repositories

@@ -5,10 +5,11 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/evt/rest-api-example/model"
+	"github.com/pr1sonmike/rest-api-example/model"
 )
 
 // UserRepo is a store for users
+//
 //go:generate mockery --dir . --name UserRepo --output ./mocks
 type UserRepo interface {
 	GetUser(context.Context, uuid.UUID) (*model.DBUser, error)
@@ -18,6 +19,7 @@ type UserRepo interface {
 }
 
 // FileMetaRepo is a store for files
+//
 //go:generate mockery --dir . --name FileMetaRepo --output ./mocks
 type FileMetaRepo interface {
 	GetFileMeta(context.Context, uuid.UUID) (*model.DBFile, error)
@@ -27,6 +29,7 @@ type FileMetaRepo interface {
 }
 
 // FileContentRepo is a store for file content
+//
 //go:generate mockery --dir . --name FileContentRepo --output ./mocks
 type FileContentRepo interface {
 	Upload(context.Context, *model.DBFile, []byte) error

@@ -3,9 +3,9 @@ package store
 import (
 	"fmt"
 
-	"github.com/evt/rest-api-example/config"
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/pkg/errors"
+
 
 	_ "github.com/golang-migrate/migrate/v4/database/mysql"
 	_ "github.com/golang-migrate/migrate/v4/database/postgres"

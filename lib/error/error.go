@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/evt/rest-api-example/lib/types"
 	"github.com/labstack/echo/v4"
+	
 )
 
 // HTTPError is our HTTP error definition.

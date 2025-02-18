@@ -10,10 +10,10 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/pkg/errors"
 
-	"github.com/evt/rest-api-example/lib/types"
-	"github.com/evt/rest-api-example/logger"
-	"github.com/evt/rest-api-example/model"
-	"github.com/evt/rest-api-example/service"
+	"github.com/pr1sonmike/rest-api-example/lib/types"
+	"github.com/pr1sonmike/rest-api-example/logger"
+	"github.com/pr1sonmike/rest-api-example/model"
+	"github.com/pr1sonmike/rest-api-example/service"
 )
 
 // FileController ...

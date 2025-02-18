@@ -1,4 +1,4 @@
-module github.com/evt/rest-api-example
+module github.com/pr1sonmike/rest-api-example
 
 go 1.22.7
 
