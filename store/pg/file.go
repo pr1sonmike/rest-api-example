@@ -5,8 +5,8 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/evt/rest-api-example/model"
 	"github.com/go-pg/pg/v10"
+	
 )
 
 // FilePgRepo ...

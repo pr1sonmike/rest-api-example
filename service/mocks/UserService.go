@@ -5,7 +5,7 @@ package mocks
 import (
 	context "context"
 
-	model "github.com/evt/rest-api-example/model"
+	model "github.com/pr1sonmike/rest-api-example/model"
 	mock "github.com/stretchr/testify/mock"
 
 	uuid "github.com/google/uuid"

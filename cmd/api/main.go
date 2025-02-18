@@ -11,13 +11,13 @@ import (
 	echoLog "github.com/labstack/gommon/log"
 	"github.com/pkg/errors"
 
-	"github.com/evt/rest-api-example/config"
-	"github.com/evt/rest-api-example/controller"
-	libError "github.com/evt/rest-api-example/lib/error"
-	"github.com/evt/rest-api-example/lib/validator"
-	"github.com/evt/rest-api-example/logger"
-	"github.com/evt/rest-api-example/service"
-	"github.com/evt/rest-api-example/store"
+	"github.com/pr1sonmike/rest-api-example/config"
+	"github.com/pr1sonmike/rest-api-example/controller"
+	libError "github.com/pr1sonmike/rest-api-example/lib/error"
+	"github.com/pr1sonmike/rest-api-example/lib/validator"
+	"github.com/pr1sonmike/rest-api-example/logger"
+	"github.com/pr1sonmike/rest-api-example/service"
+	"github.com/pr1sonmike/rest-api-example/store"
 )
 
 func main() {

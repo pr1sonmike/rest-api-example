@@ -4,13 +4,13 @@ import (
 	"context"
 	"testing"
 
-	"github.com/evt/rest-api-example/store"
+	"github.com/pr1sonmike/rest-api-example/store"
 
-	"github.com/evt/rest-api-example/model"
 	"github.com/google/uuid"
+	"github.com/pr1sonmike/rest-api-example/model"
 
-	"github.com/evt/rest-api-example/store/mocks"
 	"github.com/pkg/errors"
+	"github.com/pr1sonmike/rest-api-example/store/mocks"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	"github.com/evt/rest-api-example/store"
 	"github.com/pkg/errors"
+	"github.com/pr1sonmike/rest-api-example/store"
 )
 
 // Manager is just a collection of all services we have in the project

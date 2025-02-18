@@ -11,12 +11,12 @@ import (
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/evt/rest-api-example/lib/types"
-	"github.com/evt/rest-api-example/lib/validator"
-	"github.com/evt/rest-api-example/logger"
-	"github.com/evt/rest-api-example/model"
-	"github.com/evt/rest-api-example/service"
-	"github.com/evt/rest-api-example/service/mocks"
+	"github.com/pr1sonmike/rest-api-example/lib/types"
+	"github.com/pr1sonmike/rest-api-example/lib/validator"
+	"github.com/pr1sonmike/rest-api-example/logger"
+	"github.com/pr1sonmike/rest-api-example/model"
+	"github.com/pr1sonmike/rest-api-example/service"
+	"github.com/pr1sonmike/rest-api-example/service/mocks"
 )
 
 func TestCreateUser(t *testing.T) {

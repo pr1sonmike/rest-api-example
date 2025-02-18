@@ -8,7 +8,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/evt/rest-api-example/model"
+	"github.com/pr1sonmike/rest-api-example/model"
 )
 
 // FileMysqlRepo ...

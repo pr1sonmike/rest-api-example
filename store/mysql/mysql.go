@@ -3,8 +3,8 @@ package mysql
 import (
 	"fmt"
 
-	"github.com/evt/rest-api-example/config"
 	"github.com/jinzhu/gorm"
+	"github.com/pr1sonmike/rest-api-example/config"
 )
 
 // MySQL is a shortcut structure to a mysqldb DB handler

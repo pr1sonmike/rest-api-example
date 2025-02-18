@@ -3,8 +3,8 @@ package pg
 import (
 	"time"
 
-	"github.com/evt/rest-api-example/config"
 	"github.com/go-pg/pg/v10"
+	"github.com/pr1sonmike/rest-api-example/config"
 )
 
 // Timeout is a Postgres timeout

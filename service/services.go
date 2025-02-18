@@ -3,11 +3,12 @@ package service
 import (
 	"context"
 
-	"github.com/evt/rest-api-example/model"
 	"github.com/google/uuid"
+	"github.com/pr1sonmike/rest-api-example/model"
 )
 
 // UserService is a service for users
+//
 //go:generate mockery --dir . --name UserService --output ./mocks
 type UserService interface {
 	GetUser(context.Context, uuid.UUID) (*model.User, error)
@@ -17,6 +18,7 @@ type UserService interface {
 }
 
 // FileMetaService is a service for files
+//
 //go:generate mockery --dir . --name FileMetaService --output ./mocks
 type FileMetaService interface {
 	GetFileMeta(context.Context, uuid.UUID) (*model.File, error)
@@ -26,6 +28,7 @@ type FileMetaService interface {
 }
 
 // FileContentService is a service to upload file content
+//
 //go:generate mockery --dir . --name FileContentService --output ./mocks
 type FileContentService interface {
 	Upload(context.Context, uuid.UUID, []byte) error

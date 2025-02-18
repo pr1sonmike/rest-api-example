@@ -4,7 +4,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/evt/rest-api-example/config"
+	"github.com/pr1sonmike/rest-api-example/config"
 	"github.com/rs/zerolog"
 )
 

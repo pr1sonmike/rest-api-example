@@ -4,11 +4,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/evt/rest-api-example/lib/types"
-	"github.com/evt/rest-api-example/model"
-	"github.com/evt/rest-api-example/store"
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
+	"github.com/pr1sonmike/rest-api-example/lib/types"
+	"github.com/pr1sonmike/rest-api-example/model"
+	"github.com/pr1sonmike/rest-api-example/store"
 )
 
 // FileMetaSvc ...
